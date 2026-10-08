@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Majd Safira — Full-Stack Web Developer</title>
+    <meta name="description" content="Majd Safira — Web Application Developer &amp; Technical Support Officer at MENAITECH">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Majd Safira — Full-Stack Web Developer">
+    <meta property="og:description" content="Web Application Developer &amp; Technical Support Officer at MENAITECH">
+    <meta property="og:image" content="https://majdsafira.github.io/images/majd-safira.jpg">
+            <meta property="og:url" content="https://majdsafira.github.io/">
+        <link rel="canonical" href="https://majdsafira.github.io/">
+        <link rel="icon" type="image/jpeg" href="./images/majd-safira.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./css/portfolio.css?v=1791456770">
+    
+    <script>
+        // Apply the saved theme before first paint to avoid a flash.
+        try {
+            var t = localStorage.getItem('ms-theme');
+            if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+    </script>
+</head>
+<body>
+
+    <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-logo">
+        <span>M</span><span>S</span>
+    </div>
+    <div class="preloader-bar"><i></i></div>
+</div>
+
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="blob blob-1" aria-hidden="true"></div>
+<div class="blob blob-2" aria-hidden="true"></div>
+<div class="blob blob-3" aria-hidden="true"></div>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <header class="nav" id="nav">
+    <div class="container nav-inner">
+        <a href="#home" class="logo" aria-label="Majd Safira — home">
+            <span class="logo-mark">MS</span><span class="logo-text">Majd<b>.</b></span>
+        </a>
+
+        <nav class="nav-links" id="navLinks" aria-label="Main">
+            <a href="#about" data-nav>About</a>
+            <a href="#skills" data-nav>Skills</a>
+            <a href="#experience" data-nav>Experience</a>
+            <a href="#education" data-nav>Education</a>
+            <a href="#contact" data-nav>Contact</a>
+            <button type="button" class="btn btn-linkedin nav-mobile-cta" data-open-profile>
+                <i class="fa-brands fa-linkedin"></i> View LinkedIn Profile
+            </button>
+        </nav>
+
+        <div class="nav-actions">
+            <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle light / dark theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button type="button" class="btn btn-linkedin btn-sm nav-profile" data-open-profile>
+                <i class="fa-brands fa-linkedin"></i><span>Profile</span>
+            </button>
+            <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+    <main>
+            <section class="hero" id="home">
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <p class="eyebrow reveal"><span class="wave">👋</span> Hello, I'm</p>
+            <h1 class="hero-title">
+                <span class="split reveal" style="--d:.1s">Majd</span>
+                <span class="split gradient-text reveal" style="--d:.2s">Safira</span>
+            </h1>
+            <p class="typed-line reveal" style="--d:.3s">
+                <span class="typed" id="typed" data-words='["Full-Stack Web Developer","Back End Developer","PHP \u0026 MS SQL Server Developer","Technical Support Officer","MenaHRMS Problem Solver","Laravel \u0026 React Enthusiast"]'>Full-Stack Web Developer</span><span class="caret" aria-hidden="true"></span>
+            </p>
+            <p class="hero-summary reveal" style="--d:.4s">I build, support and maintain business-critical web systems — currently developing and supporting <strong>MenaHRMS</strong> at <strong>MENAITECH</strong>, from PHP and MS SQL Server code to patches, upgrades and happy clients.</p>
+
+            <div class="hero-cta reveal" style="--d:.5s">
+                <a href="#contact" class="btn btn-primary magnetic">
+                    <span>Let's talk</span><i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button type="button" class="btn btn-ghost magnetic" data-open-profile>
+                    <i class="fa-brands fa-linkedin"></i><span>View LinkedIn Profile</span>
+                </button>
+            </div>
+
+            <ul class="socials reveal" style="--d:.6s" aria-label="Social links">
+                <li><a href="https://github.com/majdsafira" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/majd-safira-a38245232/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                <li><a href="mailto:majdsafira@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></li>
+                <li><a href="tel:+962778091928" aria-label="Phone"><i class="fa-solid fa-phone"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="hero-visual reveal reveal-zoom" style="--d:.25s">
+            <div class="photo-wrap" data-tilt>
+                <div class="photo-ring" aria-hidden="true"></div>
+                <div class="photo-orbit" aria-hidden="true"><span></span></div>
+                <div class="photo">
+                    <img src="./images/majd-safira.jpg" alt="Portrait of Majd Safira" width="400" height="400" fetchpriority="high">
+                </div>
+                                    <div class="float-badge fb-1" style="--badge-color: #8892bf">
+                        <i class="fa-brands fa-php"></i> PHP
+                    </div>
+                                    <div class="float-badge fb-2" style="--badge-color: #e03a3e">
+                        <i class="fa-solid fa-database"></i> MS SQL Server
+                    </div>
+                                <div class="float-badge fb-3"><i class="fa-solid fa-briefcase"></i> 4+ yrs exp.</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#about" class="scroll-hint" aria-label="Scroll to About">
+        <span class="mouse"><span class="wheel"></span></span>
+    </a>
+</section>
+    <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+                                                        <span><i class="fa-brands fa-php"></i> Pure PHP (advanced)</span>
+                                    <span><i class="fa-solid fa-fire"></i> CodeIgniter</span>
+                                    <span><i class="fa-brands fa-laravel"></i> Laravel</span>
+                                    <span><i class="fa-brands fa-node-js"></i> NodeJS</span>
+                                    <span><i class="fa-solid fa-route"></i> Express</span>
+                                    <span><i class="fa-solid fa-globe"></i> Web protocols (HTTP/S)</span>
+                                                                <span><i class="fa-brands fa-html5"></i> HTML</span>
+                                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                                    <span><i class="fa-brands fa-react"></i> ReactJS</span>
+                                    <span><i class="fa-brands fa-wordpress"></i> WordPress</span>
+                                                                <span><i class="fa-solid fa-database"></i> MS SQL Server</span>
+                                    <span><i class="fa-solid fa-table"></i> MySQL</span>
+                                    <span><i class="fa-solid fa-leaf"></i> MongoDB</span>
+                                                                <span><i class="fa-solid fa-flask"></i> Unit testing</span>
+                                    <span><i class="fa-solid fa-diagram-project"></i> Integration testing</span>
+                                    <span><i class="fa-solid fa-rotate"></i> Regression testing</span>
+                                    <span><i class="fa-solid fa-robot"></i> UI automated testing</span>
+                                                                <span><i class="fa-brands fa-microsoft"></i> Azure DevOps</span>
+                                    <span><i class="fa-solid fa-server"></i> IIS Server</span>
+                                    <span><i class="fa-brands fa-github"></i> Git &amp; GitHub</span>
+                                    <span><i class="fa-solid fa-code-compare"></i> VC version control</span>
+                                    <span><i class="fa-solid fa-box-open"></i> Patch management</span>
+                                    <span><i class="fa-solid fa-download"></i> Installation &amp; upgrades</span>
+                                                                <span><i class="fa-solid fa-bug"></i> Troubleshooting</span>
+                                    <span><i class="fa-solid fa-file-waveform"></i> Log monitoring</span>
+                                    <span><i class="fa-solid fa-desktop"></i> Remote support (ShortMaze)</span>
+                                    <span><i class="fa-solid fa-microchip"></i> Hardware &amp; software faults</span>
+                                                                                    <span><i class="fa-brands fa-php"></i> Pure PHP (advanced)</span>
+                                    <span><i class="fa-solid fa-fire"></i> CodeIgniter</span>
+                                    <span><i class="fa-brands fa-laravel"></i> Laravel</span>
+                                    <span><i class="fa-brands fa-node-js"></i> NodeJS</span>
+                                    <span><i class="fa-solid fa-route"></i> Express</span>
+                                    <span><i class="fa-solid fa-globe"></i> Web protocols (HTTP/S)</span>
+                                                                <span><i class="fa-brands fa-html5"></i> HTML</span>
+                                    <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                                    <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                                    <span><i class="fa-brands fa-react"></i> ReactJS</span>
+                                    <span><i class="fa-brands fa-wordpress"></i> WordPress</span>
+                                                                <span><i class="fa-solid fa-database"></i> MS SQL Server</span>
+                                    <span><i class="fa-solid fa-table"></i> MySQL</span>
+                                    <span><i class="fa-solid fa-leaf"></i> MongoDB</span>
+                                                                <span><i class="fa-solid fa-flask"></i> Unit testing</span>
+                                    <span><i class="fa-solid fa-diagram-project"></i> Integration testing</span>
+                                    <span><i class="fa-solid fa-rotate"></i> Regression testing</span>
+                                    <span><i class="fa-solid fa-robot"></i> UI automated testing</span>
+                                                                <span><i class="fa-brands fa-microsoft"></i> Azure DevOps</span>
+                                    <span><i class="fa-solid fa-server"></i> IIS Server</span>
+                                    <span><i class="fa-brands fa-github"></i> Git &amp; GitHub</span>
+                                    <span><i class="fa-solid fa-code-compare"></i> VC version control</span>
+                                    <span><i class="fa-solid fa-box-open"></i> Patch management</span>
+                                    <span><i class="fa-solid fa-download"></i> Installation &amp; upgrades</span>
+                                                                <span><i class="fa-solid fa-bug"></i> Troubleshooting</span>
+                                    <span><i class="fa-solid fa-file-waveform"></i> Log monitoring</span>
+                                    <span><i class="fa-solid fa-desktop"></i> Remote support (ShortMaze)</span>
+                                    <span><i class="fa-solid fa-microchip"></i> Hardware &amp; software faults</span>
+                                        </div>
+</div>
+    <section class="section" id="about">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="section-kicker">01 — About me</span>
+            <h2 class="section-title">Turning ideas into <span class="gradient-text">working software</span></h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text glass reveal">
+                <p>A highly focused CIS graduate working as a Web Application Developer &amp; Technical Support Officer at MENAITECH, where I develop, troubleshoot and maintain the MenaHRMS system with advanced PHP and MS SQL Server. I understand both the system logic and the business behind it, so I can turn a client&#039;s problem into a workaround today and a proper fix tomorrow. I completed six months of intensive full-stack training at Orange Coding Academy, and I bring strong research skills, clear communication, and a genuine desire to solve real problems for real users.</p>
+                <h3 class="mini-title">Personal skills</h3>
+                <ul class="chips">
+                                            <li class="chip reveal" style="--d:0s"><i class="fa-solid fa-puzzle-piece"></i>Problem Solving</li>
+                                            <li class="chip reveal" style="--d:0.05s"><i class="fa-solid fa-comments"></i>Communication</li>
+                                            <li class="chip reveal" style="--d:0.1s"><i class="fa-solid fa-face-smile"></i>Customer Focus</li>
+                                            <li class="chip reveal" style="--d:0.15s"><i class="fa-solid fa-list-check"></i>Prioritization</li>
+                                            <li class="chip reveal" style="--d:0.2s"><i class="fa-solid fa-hourglass-half"></i>Time Management</li>
+                                            <li class="chip reveal" style="--d:0.25s"><i class="fa-solid fa-person-chalkboard"></i>Presentation</li>
+                                            <li class="chip reveal" style="--d:0.3s"><i class="fa-solid fa-people-group"></i>Leadership</li>
+                                            <li class="chip reveal" style="--d:0.35s"><i class="fa-solid fa-magnifying-glass"></i>Research</li>
+                                    </ul>
+            </div>
+
+            <div class="stats">
+                <div class="stat glass reveal" style="--d:.05s" data-tilt>
+                    <i class="fa-solid fa-briefcase"></i>
+                    <strong><span data-count="4">0</span>+</strong>
+                    <span>Years of experience</span>
+                </div>
+                <div class="stat glass reveal" style="--d:.12s" data-tilt>
+                    <i class="fa-solid fa-code"></i>
+                    <strong><span data-count="28">0</span></strong>
+                    <span>Technologies &amp; skills</span>
+                </div>
+                <div class="stat glass reveal" style="--d:.19s" data-tilt>
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <strong><span data-count="3.1" data-decimals="1">0</span></strong>
+                    <span>CIS GPA</span>
+                </div>
+                <div class="stat glass reveal" style="--d:.26s" data-tilt>
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <strong><span data-count="6">0</span></strong>
+                    <span>Months of full-stack bootcamp</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="section" id="skills">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="section-kicker">02 — Skills</span>
+            <h2 class="section-title">My <span class="gradient-text">tech stack</span></h2>
+            <p class="section-sub">From writing PHP and SQL to testing, patching and supporting systems in production.</p>
+        </div>
+
+        <div class="skills-grid">
+                            <article class="skill-card glass reveal" style="--d:0s" data-tilt>
+                    <div class="skill-card-head">
+                        <span class="skill-card-icon"><i class="fa-solid fa-server"></i></span>
+                        <h3>Backend</h3>
+                    </div>
+                    <ul class="skill-list">
+                                                    <li><i class="fa-brands fa-php"></i><span>Pure PHP (advanced)</span></li>
+                                                    <li><i class="fa-solid fa-fire"></i><span>CodeIgniter</span></li>
+                                                    <li><i class="fa-brands fa-laravel"></i><span>Laravel</span></li>
+                                                    <li><i class="fa-brands fa-node-js"></i><span>NodeJS</span></li>
+                                                    <li><i class="fa-solid fa-route"></i><span>Express</span></li>
+                                                    <li><i class="fa-solid fa-globe"></i><span>Web protocols (HTTP/S)</span></li>
+                                            </ul>
+                </article>
+                            <article class="skill-card glass reveal" style="--d:0.08s" data-tilt>
+                    <div class="skill-card-head">
+                        <span class="skill-card-icon"><i class="fa-solid fa-palette"></i></span>
+                        <h3>Frontend</h3>
+                    </div>
+                    <ul class="skill-list">
+                                                    <li><i class="fa-brands fa-html5"></i><span>HTML</span></li>
+                                                    <li><i class="fa-brands fa-css3-alt"></i><span>CSS</span></li>
+                                                    <li><i class="fa-brands fa-js"></i><span>JavaScript</span></li>
+                                                    <li><i class="fa-brands fa-react"></i><span>ReactJS</span></li>
+                                                    <li><i class="fa-brands fa-wordpress"></i><span>WordPress</span></li>
+                                            </ul>
+                </article>
+                            <article class="skill-card glass reveal" style="--d:0.16s" data-tilt>
+                    <div class="skill-card-head">
+                        <span class="skill-card-icon"><i class="fa-solid fa-database"></i></span>
+                        <h3>Databases</h3>
+                    </div>
+                    <ul class="skill-list">
+                                                    <li><i class="fa-solid fa-database"></i><span>MS SQL Server</span></li>
+                                                    <li><i class="fa-solid fa-table"></i><span>MySQL</span></li>
+                                                    <li><i class="fa-solid fa-leaf"></i><span>MongoDB</span></li>
+                                            </ul>
+                </article>
+                            <article class="skill-card glass reveal" style="--d:0s" data-tilt>
+                    <div class="skill-card-head">
+                        <span class="skill-card-icon"><i class="fa-solid fa-vial-circle-check"></i></span>
+                        <h3>Quality Assurance</h3>
+                    </div>
+                    <ul class="skill-list">
+                                                    <li><i class="fa-solid fa-flask"></i><span>Unit testing</span></li>
+                                                    <li><i class="fa-solid fa-diagram-project"></i><span>Integration testing</span></li>
+                                                    <li><i class="fa-solid fa-rotate"></i><span>Regression testing</span></li>
+                                                    <li><i class="fa-solid fa-robot"></i><span>UI automated testing</span></li>
+                                            </ul>
+                </article>
+                            <article class="skill-card glass reveal" style="--d:0.08s" data-tilt>
+                    <div class="skill-card-head">
+                        <span class="skill-card-icon"><i class="fa-solid fa-code-branch"></i></span>
+                        <h3>DevOps &amp; Release</h3>
+                    </div>
+                    <ul class="skill-list">
+                                                    <li><i class="fa-brands fa-microsoft"></i><span>Azure DevOps</span></li>
+                                                    <li><i class="fa-solid fa-server"></i><span>IIS Server</span></li>
+                                                    <li><i class="fa-brands fa-github"></i><span>Git &amp; GitHub</span></li>
+                                                    <li><i class="fa-solid fa-code-compare"></i><span>VC version control</span></li>
+                                                    <li><i class="fa-solid fa-box-open"></i><span>Patch management</span></li>
+                                                    <li><i class="fa-solid fa-download"></i><span>Installation &amp; upgrades</span></li>
+                                            </ul>
+                </article>
+                            <article class="skill-card glass reveal" style="--d:0.16s" data-tilt>
+                    <div class="skill-card-head">
+                        <span class="skill-card-icon"><i class="fa-solid fa-headset"></i></span>
+                        <h3>Support &amp; Operations</h3>
+                    </div>
+                    <ul class="skill-list">
+                                                    <li><i class="fa-solid fa-bug"></i><span>Troubleshooting</span></li>
+                                                    <li><i class="fa-solid fa-file-waveform"></i><span>Log monitoring</span></li>
+                                                    <li><i class="fa-solid fa-desktop"></i><span>Remote support (ShortMaze)</span></li>
+                                                    <li><i class="fa-solid fa-microchip"></i><span>Hardware &amp; software faults</span></li>
+                                            </ul>
+                </article>
+                    </div>
+    </div>
+</section>
+    <section class="section" id="experience">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="section-kicker">03 — Experience</span>
+            <h2 class="section-title">Where I've <span class="gradient-text">worked</span></h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-line" aria-hidden="true"><i id="timelineFill"></i></div>
+
+                            <article class="timeline-item reveal reveal-right">
+                    <span class="timeline-dot is-current" aria-hidden="true"></span>
+
+                    <div class="timeline-card glass">
+                        <div class="timeline-meta">
+                            <span class="period"><i class="fa-regular fa-calendar"></i> Oct 2022 — Present</span>
+                                                            <span class="badge-live"><span></span> Current</span>
+                                                    </div>
+
+                        <h3>Web Application Developer &amp; Technical Support Officer</h3>
+                        <p class="company">
+                            <span><i class="fa-solid fa-building"></i> MENAITECH</span>
+                                                                                </p>
+
+                                                    <p class="job-summary">Developing, supporting and maintaining MenaHRMS — MENAITECH&#039;s HR management system — for internal teams and external clients, from code and database fixes to patches, upgrades and on-site visits.</p>
+                        
+                                                    <ul class="tags">
+                                                                    <li>PHP</li>
+                                                                    <li>MS SQL Server</li>
+                                                                    <li>Web protocols</li>
+                                                                    <li>MenaHRMS</li>
+                                                                    <li>ShortMaze</li>
+                                                                    <li>VC</li>
+                                                                    <li>QA</li>
+                                                            </ul>
+                        
+                        <div class="duty-grid ">
+                                                            <div class="duty">
+                                    <h4><i class="fa-solid fa-code"></i> Development &amp; Systems</h4>
+                                    <ul class="ticks">
+                                                                                    <li>Understanding system logic and business details to deliver the right fix.</li>
+                                                                                    <li>Developing with advanced PHP, web protocols and MS SQL Server.</li>
+                                                                                    <li>Building workaround solutions or fixing major faults on the systems.</li>
+                                                                                    <li>Developing HRMS installation and VC upgrade tools, and checking VC logs.</li>
+                                                                            </ul>
+                                </div>
+                                                            <div class="duty">
+                                    <h4><i class="fa-solid fa-headset"></i> Support &amp; Troubleshooting</h4>
+                                    <ul class="ticks">
+                                                                                    <li>Monitoring and maintaining MenaHRMS issues daily using ShortMaze.</li>
+                                                                                    <li>Guiding staff and clients face to face, by phone, email, visits and ShortMaze meetings.</li>
+                                                                                    <li>Diagnosing and solving hardware and software faults.</li>
+                                                                                    <li>Owning cases to completion within agreed repair times, or delegating to the right team.</li>
+                                                                                    <li>Prioritizing and managing several open cases at once.</li>
+                                                                            </ul>
+                                </div>
+                                                            <div class="duty">
+                                    <h4><i class="fa-solid fa-code-branch"></i> Patch &amp; Version Control</h4>
+                                    <ul class="ticks">
+                                                                                    <li>Documenting bug fixes on patch lists, visit sheets and the Done Pool.</li>
+                                                                                    <li>Managing and sending mass patches to clients.</li>
+                                                                                    <li>Managing VC version control and following up on VC done status.</li>
+                                                                                    <li>Checking system log files regularly.</li>
+                                                                            </ul>
+                                </div>
+                                                            <div class="duty">
+                                    <h4><i class="fa-solid fa-vial-circle-check"></i> Quality Assurance</h4>
+                                    <ul class="ticks">
+                                                                                    <li>Developing and implementing QA procedures and standards.</li>
+                                                                                    <li>Applying unit, integration, regression and UI automated testing.</li>
+                                                                                    <li>Providing procedural support and documentation for users.</li>
+                                                                            </ul>
+                                </div>
+                                                    </div>
+                    </div>
+                </article>
+                            <article class="timeline-item reveal reveal-right">
+                    <span class="timeline-dot " aria-hidden="true"></span>
+
+                    <div class="timeline-card glass">
+                        <div class="timeline-meta">
+                            <span class="period"><i class="fa-regular fa-calendar"></i> Sep 2022 — Oct 2022</span>
+                                                    </div>
+
+                        <h3>Back End Developer</h3>
+                        <p class="company">
+                            <span><i class="fa-solid fa-building"></i> QTech Networks International</span>
+                                                            <span><i class="fa-solid fa-clock"></i> Full-time</span>
+                                                                                        <span><i class="fa-solid fa-location-dot"></i> Amman, Jordan</span>
+                                                    </p>
+
+                                                    <p class="job-summary">Back-end development role building and maintaining the server-side of web applications — application logic, database queries and integrations — with PHP and SQL.</p>
+                        
+                                                    <ul class="tags">
+                                                                    <li>PHP</li>
+                                                                    <li>SQL</li>
+                                                                    <li>REST APIs</li>
+                                                                    <li>Back-end</li>
+                                                            </ul>
+                        
+                        <div class="duty-grid ">
+                                                            <div class="duty">
+                                    <h4><i class="fa-solid fa-server"></i> Back-end Development</h4>
+                                    <ul class="ticks">
+                                                                                    <li>Developed server-side features and business logic in PHP.</li>
+                                                                                    <li>Wrote and optimized SQL queries for application data.</li>
+                                                                                    <li>Built and consumed APIs to connect the back-end with front-end and third-party services.</li>
+                                                                            </ul>
+                                </div>
+                                                            <div class="duty">
+                                    <h4><i class="fa-solid fa-people-group"></i> Quality &amp; Teamwork</h4>
+                                    <ul class="ticks">
+                                                                                    <li>Tested, debugged and fixed back-end issues.</li>
+                                                                                    <li>Worked with the team on requirements, code reviews and delivery.</li>
+                                                                                    <li>Kept code clean, readable and documented.</li>
+                                                                            </ul>
+                                </div>
+                                                    </div>
+                    </div>
+                </article>
+                    </div>
+    </div>
+</section>
+    <section class="section" id="education">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="section-kicker">04 — Education</span>
+            <h2 class="section-title">Education &amp; <span class="gradient-text">training</span></h2>
+        </div>
+
+        <div class="edu-grid">
+                            <article class="edu-card glass reveal" style="--d:0s" data-tilt>
+                    <span class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <span class="period"><i class="fa-regular fa-calendar"></i> Aug 2020 — Aug 2024</span>
+                    <h3>Bachelor&#039;s Degree in Computer Information Systems (CIS)</h3>
+                    <p class="company">The University of Jordan — Aqaba</p>
+                    <p class="muted">GPA: 3.1</p>
+                </article>
+                            <article class="edu-card glass reveal" style="--d:0.1s" data-tilt>
+                    <span class="edu-icon"><i class="fa-solid fa-laptop-code"></i></span>
+                    <span class="period"><i class="fa-regular fa-calendar"></i> Feb 2022 — Sep 2022</span>
+                    <h3>Full-Stack Web Development Trainee</h3>
+                    <p class="company">Orange Coding Academy — Irbid, Jordan</p>
+                    <p class="muted">Intensive web development bootcamp in collaboration with Simplon.co and Princess Sumaya University for Technology (PSUT).</p>
+                </article>
+                    </div>
+    </div>
+</section>
+    <section class="section" id="contact">
+    <div class="container">
+        <div class="contact-panel glass reveal">
+            <div class="contact-glow" aria-hidden="true"></div>
+            <span class="section-kicker">05 — Contact</span>
+            <h2 class="section-title">Let's build something <span class="gradient-text">great together</span></h2>
+            <p class="section-sub">Have a project, a role or just a question? My inbox is always open.</p>
+
+            <div class="contact-grid">
+                <a class="contact-card reveal" style="--d:.05s" href="mailto:majdsafira@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="label">Email</span>
+                    <span class="value">majdsafira@gmail.com</span>
+                </a>
+                <a class="contact-card reveal" style="--d:.12s" href="tel:+962778091928">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="label">Phone</span>
+                    <span class="value">+962 7 7809 1928</span>
+                </a>
+                <a class="contact-card reveal" style="--d:.19s" href="https://github.com/majdsafira" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github"></i>
+                    <span class="label">GitHub</span>
+                    <span class="value">github.com/majdsafira</span>
+                </a>
+                <button type="button" class="contact-card reveal" style="--d:.26s" data-open-profile>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span class="label">LinkedIn</span>
+                    <span class="value">View my profile</span>
+                </button>
+            </div>
+
+            <div class="contact-actions reveal" style="--d:.3s">
+                <a href="mailto:majdsafira@gmail.com" class="btn btn-primary btn-lg magnetic">
+                    <i class="fa-solid fa-paper-plane"></i><span>Say hello</span>
+                </a>
+                <a href="https://wa.me/962778091928?text=Hi%20Majd%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch."
+                   class="btn btn-whatsapp btn-lg magnetic" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-whatsapp"></i><span>Chat on WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer class="footer">
+    <div class="container footer-inner">
+        <p>&copy; 2026 Majd Safira. Built with <i class="fa-brands fa-laravel"></i> Laravel &amp; <i class="fa-solid fa-heart"></i></p>
+        <a href="#home" class="to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+</footer>
+    <dialog class="profile-dialog" id="profileDialog" aria-labelledby="pdName">
+    <div class="pd-card">
+        <button type="button" class="pd-close" data-close-profile aria-label="Close profile">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="pd-banner">
+            <span class="pd-brand"><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
+        </div>
+
+        <div class="pd-head">
+            <div class="pd-avatar">
+                <img src="./images/majd-safira.jpg" alt="Majd Safira" width="400" height="400" loading="lazy">
+            </div>
+            <div class="pd-identity">
+                <h3 id="pdName">Majd Safira</h3>
+                <p class="pd-headline">Web Application Developer &amp; Technical Support Officer at MENAITECH</p>
+                <p class="pd-meta">
+                    <span><i class="fa-solid fa-location-dot"></i> Jordan</span>
+                    <span><i class="fa-solid fa-building"></i> MENAITECH</span>
+                    <span><i class="fa-solid fa-graduation-cap"></i> The University of Jordan</span>
+                </p>
+                <div class="pd-actions">
+                    <a href="https://www.linkedin.com/in/majd-safira-a38245232/" target="_blank" rel="noopener" class="btn btn-linkedin">
+                        <i class="fa-brands fa-linkedin"></i><span>Open on LinkedIn</span>
+                    </a>
+                    <button type="button" class="btn btn-ghost" id="copyProfile" data-url="https://www.linkedin.com/in/majd-safira-a38245232/">
+                        <i class="fa-regular fa-copy"></i><span>Copy link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pd-body">
+            <section class="pd-section">
+                <h4>About</h4>
+                <p>A highly focused CIS graduate working as a Web Application Developer &amp; Technical Support Officer at MENAITECH, where I develop, troubleshoot and maintain the MenaHRMS system with advanced PHP and MS SQL Server. I understand both the system logic and the business behind it, so I can turn a client&#039;s problem into a workaround today and a proper fix tomorrow. I completed six months of intensive full-stack training at Orange Coding Academy, and I bring strong research skills, clear communication, and a genuine desire to solve real problems for real users.</p>
+            </section>
+
+            <section class="pd-section">
+                <h4>Experience</h4>
+                                    <div class="pd-row">
+                        <span class="pd-logo">M</span>
+                        <div>
+                            <strong>Web Application Developer &amp; Technical Support Officer</strong>
+                            <span>MENAITECH</span>
+                            <small>Oct 2022 — Present</small>
+                                                            <p class="pd-desc">Developing, supporting and maintaining MenaHRMS — MENAITECH&#039;s HR management system — for internal teams and external clients, from code and database fixes to patches, upgrades and on-site visits.</p>
+                                                    </div>
+                    </div>
+                                    <div class="pd-row">
+                        <span class="pd-logo">Q</span>
+                        <div>
+                            <strong>Back End Developer</strong>
+                            <span>QTech Networks International</span>
+                            <small>Sep 2022 — Oct 2022</small>
+                                                            <p class="pd-desc">Back-end development role building and maintaining the server-side of web applications — application logic, database queries and integrations — with PHP and SQL.</p>
+                                                    </div>
+                    </div>
+                            </section>
+
+            <section class="pd-section">
+                <h4>Education</h4>
+                                    <div class="pd-row">
+                        <span class="pd-logo"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <div>
+                            <strong>The University of Jordan — Aqaba</strong>
+                            <span>Bachelor&#039;s Degree in Computer Information Systems (CIS)</span>
+                            <small>Aug 2020 — Aug 2024</small>
+                        </div>
+                    </div>
+                                    <div class="pd-row">
+                        <span class="pd-logo"><i class="fa-solid fa-laptop-code"></i></span>
+                        <div>
+                            <strong>Orange Coding Academy — Irbid, Jordan</strong>
+                            <span>Full-Stack Web Development Trainee</span>
+                            <small>Feb 2022 — Sep 2022</small>
+                        </div>
+                    </div>
+                            </section>
+
+            <section class="pd-section">
+                <h4>Skills</h4>
+                <ul class="chips">
+                                                                        <li class="chip"><i class="fa-brands fa-php"></i>Pure PHP (advanced)</li>
+                                                    <li class="chip"><i class="fa-solid fa-fire"></i>CodeIgniter</li>
+                                                    <li class="chip"><i class="fa-brands fa-laravel"></i>Laravel</li>
+                                                    <li class="chip"><i class="fa-brands fa-node-js"></i>NodeJS</li>
+                                                    <li class="chip"><i class="fa-solid fa-route"></i>Express</li>
+                                                    <li class="chip"><i class="fa-solid fa-globe"></i>Web protocols (HTTP/S)</li>
+                                                                                                <li class="chip"><i class="fa-brands fa-html5"></i>HTML</li>
+                                                    <li class="chip"><i class="fa-brands fa-css3-alt"></i>CSS</li>
+                                                    <li class="chip"><i class="fa-brands fa-js"></i>JavaScript</li>
+                                                    <li class="chip"><i class="fa-brands fa-react"></i>ReactJS</li>
+                                                    <li class="chip"><i class="fa-brands fa-wordpress"></i>WordPress</li>
+                                                                                                <li class="chip"><i class="fa-solid fa-database"></i>MS SQL Server</li>
+                                                    <li class="chip"><i class="fa-solid fa-table"></i>MySQL</li>
+                                                    <li class="chip"><i class="fa-solid fa-leaf"></i>MongoDB</li>
+                                                                                                <li class="chip"><i class="fa-solid fa-flask"></i>Unit testing</li>
+                                                    <li class="chip"><i class="fa-solid fa-diagram-project"></i>Integration testing</li>
+                                                    <li class="chip"><i class="fa-solid fa-rotate"></i>Regression testing</li>
+                                                    <li class="chip"><i class="fa-solid fa-robot"></i>UI automated testing</li>
+                                                                                                <li class="chip"><i class="fa-brands fa-microsoft"></i>Azure DevOps</li>
+                                                    <li class="chip"><i class="fa-solid fa-server"></i>IIS Server</li>
+                                                    <li class="chip"><i class="fa-brands fa-github"></i>Git &amp; GitHub</li>
+                                                    <li class="chip"><i class="fa-solid fa-code-compare"></i>VC version control</li>
+                                                    <li class="chip"><i class="fa-solid fa-box-open"></i>Patch management</li>
+                                                    <li class="chip"><i class="fa-solid fa-download"></i>Installation &amp; upgrades</li>
+                                                                                                <li class="chip"><i class="fa-solid fa-bug"></i>Troubleshooting</li>
+                                                    <li class="chip"><i class="fa-solid fa-file-waveform"></i>Log monitoring</li>
+                                                    <li class="chip"><i class="fa-solid fa-desktop"></i>Remote support (ShortMaze)</li>
+                                                    <li class="chip"><i class="fa-solid fa-microchip"></i>Hardware &amp; software faults</li>
+                                                            </ul>
+            </section>
+        </div>
+    </div>
+</dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./js/portfolio.js?v=1791455742" defer></script>
+    </body>
+</html>
