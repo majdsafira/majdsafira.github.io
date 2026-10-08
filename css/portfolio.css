@@ -1669,14 +1669,41 @@ strong { font-weight: 600; }
     .profile-dialog { width: calc(100% - 20px); }
 }
 
-/* ---------- Reduced motion ---------- */
+/* ---------- After the entrance: snappy hover / tap ---------- */
+.js .reveal.is-done {
+    transition: transform .35s var(--ease), opacity .35s, border-color .3s, box-shadow .3s, background-color .3s;
+}
+
+/* ---------- Touch feedback (phones / tablets) ---------- */
+.touch .is-pressed {
+    transform: scale(.97) !important;
+    transition: transform .12s ease-out, border-color .2s, box-shadow .2s !important;
+}
+
+.touch .skill-card.is-pressed,
+.touch .stat.is-pressed,
+.touch .edu-card.is-pressed,
+.touch .duty.is-pressed,
+.touch .contact-card.is-pressed,
+.touch .skill-list li.is-pressed {
+    border-color: var(--accent);
+    box-shadow: var(--glow);
+}
+
+.touch .skill-card.is-pressed::before { opacity: 1; }
+.touch .skill-list li.is-pressed i,
+.touch .contact-card.is-pressed i { transform: scale(1.25) rotate(-8deg); }
+
+.touch .photo-wrap { transition: transform .2s linear; will-change: transform; }
+
+/* ---------- Reduced motion ----------
+   Phones with "Remove animations" / "Reduce motion" (often enabled by battery saver)
+   still get the page's animations, just without the large drifting movement. */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    *, *::before, *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
-    }
-    .js .reveal { opacity: 1; transform: none; }
-    #bg-canvas, .cursor-glow { display: none; }
+    .blob, .photo-orbit { animation: none; }
+    .js .reveal,
+    .js .reveal-left,
+    .js .reveal-right { transform: translateY(14px); }
+    .js .reveal-zoom { transform: scale(.96); }
 }

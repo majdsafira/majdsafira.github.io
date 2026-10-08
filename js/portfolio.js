@@ -24,7 +24,7 @@
     }
 
     // The script is deferred, so the DOM is ready here; don't wait for slow CDN fonts/icons.
-    setTimeout(hidePreloader, reduceMotion ? 0 : 700);
+    setTimeout(hidePreloader, 700);
 
     /* ---------- Theme toggle ---------- */
     var themeBtn = $('#themeToggle');
@@ -79,6 +79,7 @@
     var progress = $('#scrollProgress');
     var timeline = $('.timeline');
     var timelineFill = $('#timelineFill');
+    var photoTilt = finePointer ? null : $('.photo-wrap'); // touch: tilt the photo as you scroll
     var ticking = false;
 
     function onScroll() {
@@ -93,6 +94,12 @@
             var start = window.innerHeight * 0.75;
             var pct = Math.min(1, Math.max(0, (start - r.top) / r.height));
             timelineFill.style.transform = 'scaleY(' + pct + ')';
+        }
+
+        if (photoTilt) {
+            var t = Math.min(1, y / (window.innerHeight * 0.8));
+            photoTilt.style.transform = 'perspective(900px) rotateX(' + (t * 14) + 'deg) rotateY('
+                + (Math.sin(y / 160) * 6) + 'deg) scale(' + (1 - t * 0.08) + ')';
         }
 
         ticking = false;
@@ -124,24 +131,32 @@
     /* ---------- Reveal on scroll ---------- */
     var heroReveals = $$('.hero .reveal');
 
+    // Once the entrance has played, .is-done swaps the slow, delayed reveal
+    // transition for a quick one so hover/tap effects respond instantly.
+    function show(el) {
+        el.classList.add('is-visible');
+        var delay = parseFloat(getComputedStyle(el).transitionDelay) || 0;
+        setTimeout(function () { el.classList.add('is-done'); }, 950 + delay * 1000);
+    }
+
     function revealHero() {
-        heroReveals.forEach(function (el) { el.classList.add('is-visible'); });
+        heroReveals.forEach(show);
     }
 
     var reveals = $$('.reveal').filter(function (el) { return heroReveals.indexOf(el) === -1; });
 
-    if ('IntersectionObserver' in window && !reduceMotion) {
+    if ('IntersectionObserver' in window) {
         var revealObserver = new IntersectionObserver(function (entries, obs) {
             entries.forEach(function (entry) {
                 if (!entry.isIntersecting) return;
-                entry.target.classList.add('is-visible');
+                show(entry.target);
                 obs.unobserve(entry.target);
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
         reveals.forEach(function (el) { revealObserver.observe(el); });
     } else {
-        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+        reveals.forEach(show);
         revealHero();
     }
 
@@ -149,7 +164,6 @@
     function animateCount(el) {
         var target = parseFloat(el.getAttribute('data-count')) || 0;
         var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-        if (reduceMotion) { el.textContent = target.toFixed(decimals); return; }
 
         var duration = 1600;
         var startTime = null;
@@ -184,7 +198,7 @@
         var words = [];
         try { words = JSON.parse(typedEl.getAttribute('data-words') || '[]'); } catch (e) {}
 
-        if (words.length && !reduceMotion) {
+        if (words.length) {
             var wi = 0, ci = 0, deleting = false;
             typedEl.textContent = '';
 
@@ -207,7 +221,7 @@
     var HOVER_TRANSITION = 'transform .15s ease-out, border-color .3s, box-shadow .3s, background-color .3s';
     var LEAVE_TRANSITION = 'transform .6s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s, background-color .3s';
 
-    if (finePointer && !reduceMotion) {
+    if (finePointer) {
         $$('[data-tilt]').forEach(function (el) {
             var max = el.classList.contains('photo-wrap') ? 10 : 6;
 
@@ -262,9 +276,34 @@
         }
     }
 
+    /* ---------- Touch devices: tap feedback ---------- */
+    if (!finePointer) {
+        root.classList.add('touch');
+
+        var PRESSABLE = '[data-tilt]:not(.photo-wrap), .skill-list li, .duty, .contact-card, .chip, .btn, .socials a';
+
+        document.addEventListener('pointerdown', function (e) {
+            var el = e.target.closest && e.target.closest(PRESSABLE);
+            if (!el) return;
+
+            var r = el.getBoundingClientRect();
+            el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+            el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+            el.classList.add('is-pressed');
+
+            var release = function () {
+                setTimeout(function () { el.classList.remove('is-pressed'); }, 160);
+                document.removeEventListener('pointerup', release);
+                document.removeEventListener('pointercancel', release);
+            };
+            document.addEventListener('pointerup', release);
+            document.addEventListener('pointercancel', release);
+        }, { passive: true });
+    }
+
     /* ---------- Particle network background ---------- */
     var canvas = $('#bg-canvas');
-    if (canvas && canvas.getContext && !reduceMotion) {
+    if (canvas && canvas.getContext) {
         var ctx = canvas.getContext('2d');
         var dpr = Math.min(window.devicePixelRatio || 1, 2);
         var particles = [];
@@ -282,14 +321,15 @@
             canvas.height = h * dpr;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-            var count = Math.round(Math.min(90, (w * h) / 16000));
+            var count = Math.round(Math.max(32, Math.min(90, (w * h) / 16000)));
+            var speed = reduceMotion ? 0.15 : (finePointer ? 0.35 : 0.5);
             particles = [];
             for (var i = 0; i < count; i++) {
                 particles.push({
                     x: Math.random() * w,
                     y: Math.random() * h,
-                    vx: (Math.random() - 0.5) * 0.35,
-                    vy: (Math.random() - 0.5) * 0.35,
+                    vx: (Math.random() - 0.5) * speed,
+                    vy: (Math.random() - 0.5) * speed,
                     r: Math.random() * 1.6 + 0.6
                 });
             }
@@ -365,7 +405,6 @@
             else dialog.removeAttribute('open');
         };
 
-        if (reduceMotion) { finish(); return; }
         dialog.classList.add('is-closing');
         setTimeout(finish, 280);
     }
